@@ -23,6 +23,11 @@ const { ROUTES, injectBase, ROOT } = require('./server.js');
 
 const OUT = path.join(ROOT, 'docs');
 
+// GitHub Pages project sites are served from /<repo-name>/, not the domain
+// root, so every absolute path (/style.css, /bounce-house-rentals/, ...)
+// needs this prefix. Leave as '' if you're using a custom domain (root-served).
+const BASE_PATH = '/FiestaJ_web_redesign';
+
 // Static assets every page needs, copied as-is (no includes inside these).
 const STATIC_FILES = ['style.css', 'subpages.css', 'dark-mode.css', 'main.js', 'router.js'];
 
@@ -30,10 +35,23 @@ function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
+// Rewrites root-absolute hrefs/srcs (`/style.css`) to be base-path-aware
+// (`/FiestaJ_web_redesign/style.css`). Skips protocol-relative ("//cdn...")
+// and already-prefixed paths.
+function applyBasePath(html) {
+  if (!BASE_PATH) return html;
+  // Matches href/src/action="/..." (root-absolute) but not "//cdn..."
+  // (protocol-relative) or paths already carrying the base path.
+  return html.replace(
+    new RegExp(`(href|src|action)="\\/(?!\\/|${BASE_PATH.slice(1)}\\/)`, 'g'),
+    `$1="${BASE_PATH}/`
+  );
+}
+
 function buildPage(urlPath, srcRelPath) {
   const srcPath = path.join(ROOT, srcRelPath);
   const raw = fs.readFileSync(srcPath);
-  const rendered = injectBase(raw, '.html', urlPath).toString('utf8');
+  const rendered = applyBasePath(injectBase(raw, '.html', urlPath).toString('utf8'));
 
   // /  → docs/index.html
   // /bounce-house-rentals/ → docs/bounce-house-rentals/index.html

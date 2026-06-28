@@ -654,8 +654,8 @@
     If no API key is set, the section shows the hardcoded fallback values
     already in the HTML (4.9 / "Google Reviews") — still looks correct.
   ════════════════════════════════════════════════════════════ */
-  const GOOGLE_PLACES_API_KEY = 'AIzaSyDOIxEgIpLeDHrl7jjUW5Y9yN4W4K'; // ← paste your key here e.g. 'AIzaSy...'
-  const GOOGLE_PLACE_ID = 'ChIJqTT7ICpB6YARA3sVQN0MNuo'; // ← confirm your Place ID
+  const GOOGLE_PLACES_API_KEY = 'google_api_key'; // ← paste your key here e.g. 'AIzaSy...'
+  const GOOGLE_PLACE_ID = 'google_id'; // ← confirm your Place ID
 
   async function fetchGoogleRating() {
     if (!GOOGLE_PLACES_API_KEY || !GOOGLE_PLACE_ID) return;
