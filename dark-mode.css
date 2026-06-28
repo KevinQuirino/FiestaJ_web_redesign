@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE
+   ───────────────────────────────────────────────────────────────
+   Toggled by setting data-theme="dark" on <html> (see initThemeToggle
+   in main.js + the early-set snippet in <head>). This file is loaded
+   on every page, always — it does nothing until that attribute is
+   present, so there's no extra request or flash when switching themes.
+
+   Most of the site already reads color from the var(--token) tokens
+   defined in style.css :root, so redefining those tokens here recolors
+   the whole site automatically. The selector list below only covers
+   the handful of places that hardcode a literal #fff / rgba(255,255,255,*)
+   "card on a light page" background instead of a token.
+═══════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] {
+  /* ── Brand — brightened slightly so they hold contrast on dark surfaces ── */
+  --orange: #FF7A45;
+  --orange-dk: #FF5A1F;
+  --orange-lt: #3A2014;
+
+  --yellow: #FFD84D;
+  --yellow-dk: #FFC107;
+  --yellow-lt: #332B10;
+
+  --green: #94D52E;
+  --green-lt: #1F2E0E;
+
+  --blue: #5C8AE0;
+  --blue-md: #4674C8;
+  --blue-lt: #16223A;
+
+  /* ── Neutrals — inverted ── */
+  --ink: #F3ECE3;
+  --ink2: #D8CCBC;
+  --ink3: #A4988A;
+  --ink4: #71665A;
+  --border: #332B23;
+  --border2: #443A2F;
+  --surface: #211B16;
+  --white: #211B16;
+  --off-white: #15110D;
+
+  /* ── Gradients ── */
+  --grad-hero: linear-gradient(150deg, #2A2410 0%, #241F0C 35%, #16223A 100%);
+  --grad-blue: linear-gradient(135deg, #1E4A96 0%, #16223A 100%);
+
+  /* ── Shadows — drop the colored glow, use real elevation against dark bg ── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, .45);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, .5);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, .55);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, .35), 0 1px 4px rgba(0, 0, 0, .3);
+}
+
+/* ── Hardcoded "#fff surface" selectors — redirected to dark tokens ── */
+[data-theme="dark"] .site-header,
+[data-theme="dark"] .filter-bar {
+  background: rgba(21, 17, 13, .94);
+}
+
+[data-theme="dark"] .drop-panel,
+[data-theme="dark"] .mob-drawer,
+[data-theme="dark"] .rev-card,
+[data-theme="dark"] .rtab,
+[data-theme="dark"] .pc,
+[data-theme="dark"] .cat-card,
+[data-theme="dark"] .diff-card,
+[data-theme="dark"] .map-section,
+[data-theme="dark"] .cart-sidebar,
+[data-theme="dark"] .filter-pill,
+[data-theme="dark"] .pcard,
+[data-theme="dark"] .seo-section,
+[data-theme="dark"] .seo-chip,
+[data-theme="dark"] .hero-location,
+[data-theme="dark"] .hero-badge,
+[data-theme="dark"] .partner-card {
+  background: var(--surface);
+}
+
+[data-theme="dark"] .cat-card--featured,
+[data-theme="dark"] .cat-card--gold {
+  background: linear-gradient(180deg, var(--surface), var(--off-white));
+}
+
+[data-theme="dark"] .hc-btn {
+  background: rgba(255, 255, 255, .14);
+}
+
+[data-theme="dark"] .hc-btn:hover {
+  background: rgba(255, 255, 255, .24);
+}
+
+[data-theme="dark"] .cart-overlay {
+  background: rgba(0, 0, 0, .7);
+}
+
+[data-theme="dark"] .hdr-cart-count {
+  border-color: var(--off-white);
+}
+
+/* Page background image / hero photos can look washed out on dark — dim slightly */
+[data-theme="dark"] img:not(.hdr-logo-img) {
+  filter: brightness(.92);
+}

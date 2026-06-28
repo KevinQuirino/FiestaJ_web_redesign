@@ -1,0 +1,13 @@
+version: 3
+agent:
+  authtoken: YOUR_NGROK_AUTHTOKEN_HERE
+
+# Local tunnel configuration for the Fiesta Jumps dev server
+# Copy this file to ngrok.yml, paste in your real authtoken, then:
+#   Start with: ngrok start server --config ngrok.yml
+# ngrok.yml is gitignored so your token never gets committed.
+
+tunnels:
+  server:
+    proto: http
+    addr: 3000

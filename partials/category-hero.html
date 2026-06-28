@@ -1,0 +1,41 @@
+<!-- ══ CATEGORY HERO ════════════════════════════════════════ -->
+<section class="cat-hero">
+    <div class="container cat-hero-inner">
+
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb-row" aria-label="Breadcrumb">
+            <a href="/" class="fj-link">Home</a>
+            <span class="bc-sep">›</span>
+            {{crumbMiddle}}<span class="bc-current">{{breadcrumbCurrent}}</span>
+        </nav>
+
+        <p class="cat-tag">{{catTag}}</p>
+        <h1>{{title}}</h1>
+        <p class="cat-hero-desc">
+            {{desc}}
+        </p>
+
+        <div class="cat-hero-badges">
+            {{badgesHtml}}
+        </div>
+
+        <div class="cat-hero-ctas">
+            <!-- ✅ AJAX PREFETCH — primary CTA prefetches /book-now/ on hover -->
+            <a href="{{ctaPrimaryHref}}" class="btn btn-orange btn-lg fj-link">
+                {{ctaPrimaryText}}
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M4.5 10h11m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.75"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="tel:+18055630870" class="btn btn-ghost btn-lg">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path
+                        d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-7.18 0-13-5.82-13-13V3.5z"
+                        fill="currentColor" />
+                </svg>
+                (805) 563-0870
+            </a>
+        </div>
+    </div>
+</section>

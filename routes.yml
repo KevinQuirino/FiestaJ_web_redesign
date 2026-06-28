@@ -1,0 +1,249 @@
+# ═══════════════════════════════════════════════════════════════
+# FIESTA JUMPS — SITE ROUTE MAP
+# ═══════════════════════════════════════════════════════════════
+#
+# FORMAT:
+#   route:    clean URL slug (what appears in browser / WordPress)
+#   file:     actual HTML file on disk
+#   title:    page <title> for SEO
+#   prefetch: pages to preload when this page loads (likely next visits)
+#
+# HOW IT WORKS:
+#   1. LOCAL (Live Server / VS Code):
+#      router.js reads this file and rewrites every fj-link href
+#      from clean slugs → actual .html filenames automatically.
+#      So clicking "/bounce-house-rentals/" → opens classic-bounce-houses.html
+#
+#   2. WORDPRESS:
+#      Use the "route" values as your WordPress page slugs.
+#      Your WordPress page for Classic Bounce Houses gets slug: bounce-house-rentals
+#      The HTML file content goes into that WordPress page template.
+#
+#   3. APACHE / NGINX:
+#      See rewrite rules at the bottom of this file.
+#      Copy those into your .htaccess (Apache) or nginx.conf (Nginx).
+# ═══════════════════════════════════════════════════════════════
+
+pages:
+  # ── HOMEPAGE ───────────────────────────────────────────────
+  - route: "/"
+    file: "homePage/index.html"
+    title: "Fiesta Jumps – Best Party Rentals in Santa Barbara, CA"
+    prefetch:
+      - "/bounce-house-rentals/"
+      - "/water-slides-rentals/"
+      - "/bundle-deals/"
+      - "/book-now/"
+
+  # ── BOUNCE HOUSES ──────────────────────────────────────────
+  - route: "/bounce-house-rentals/"
+    file: "bounceHouses/classic-bounce-houses.html"
+    title: "Classic Bounce House Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/combo-bounce-house-rentals/"
+      - "/water-slides-rentals/"
+      - "/bundle-deals/"
+      - "/book-now/"
+
+  - route: "/combo-bounce-house-rentals/"
+    file: "bounceHouses/combo-bounce-houses.html"
+    title: "Combo Bounce House Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bounce-house-rentals/"
+      - "/water-slides-rentals/"
+      - "/bundle-deals/"
+
+  - route: "/dry-slide-rentals/"
+    file: "bounceHouses/dry-slides.html"
+    title: "Dry Slide Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/water-slides-rentals/"
+      - "/obstacle-course-rentals/"
+
+  - route: "/water-slides-rentals/"
+    file: "bounceHouses/water-slides.html"
+    title: "Water Slide Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bounce-house-rentals/"
+      - "/foam-cannon-rentals/"
+      - "/bundle-deals/"
+
+  - route: "/foam-cannon-rentals/"
+    file: "bounceHouses/foam-cannon.html"
+    title: "Foam Cannon Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/water-slides-rentals/"
+      - "/interactive-game-rentals/"
+
+  # ── ACTIVITIES ─────────────────────────────────────────────
+  - route: "/obstacle-course-rentals/"
+    file: "Activities/obstacle-courses.html"
+    title: "Obstacle Course Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/interactive-game-rentals/"
+      - "/bundle-deals/"
+
+  - route: "/interactive-game-rentals/"
+    file: "Activities/interactive-games.html"
+    title: "Interactive Game Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/concessions-machine/"
+      - "/photo-booth-rental/"
+
+  - route: "/photo-booth-rental/"
+    file: "Activities/photo-booth.html"
+    title: "Photo Booth Rental in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/interactive-game-rentals/"
+      - "/concessions-machine/"
+
+  - route: "/concessions-machine/"
+    file: "Activities/concessions.html"
+    title: "Concession Machine Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bundle-deals/"
+      - "/tent-rentals/"
+
+  - route: "/sb-trackless-train/"
+    file: "Activities/trackless-train.html"
+    title: "SB Trackless Train Rental in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bundle-deals/"
+      - "/fully-staffed-attendants/"
+
+  # ── EVENT ESSENTIALS ───────────────────────────────────────
+  - route: "/tent-rentals/"
+    file: "eventEssentials/tent-rentals.html"
+    title: "Tent Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/tables-chairs-linen/"
+      - "/generators/"
+      - "/bundle-deals/"
+
+  - route: "/tables-chairs-linen/"
+    file: "eventEssentials/tables-chairs.html"
+    title: "Table, Chair & Linen Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/tent-rentals/"
+      - "/bundle-deals/"
+
+  - route: "/generators/"
+    file: "eventEssentials/generators.html"
+    title: "Generator Rentals in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/tent-rentals/"
+      - "/fully-staffed-attendants/"
+
+  - route: "/fully-staffed-attendants/"
+    file: "eventEssentials/staffed-attendants.html"
+    title: "Fully Staffed Attendants in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bundle-deals/"
+
+  # ── DEALS ──────────────────────────────────────────────────
+  - route: "/bundle-deals/"
+    file: "deals/bundle-deals.html"
+    title: "Party Bundle Deals & Packages in Santa Barbara | Fiesta Jumps"
+    prefetch:
+      - "/bounce-house-rentals/"
+      - "/book-now/"
+
+  # ── COMPANY ────────────────────────────────────────────────
+  - route: "/about-us/"
+    file: "company/about.html"
+    title: "About Fiesta Jumps – 26 Years Serving Santa Barbara"
+    prefetch:
+      - "/service-area/"
+      - "/contact/"
+
+  - route: "/service-area/"
+    file: "company/service-area.html"
+    title: "Our Service Area – Santa Barbara & Central Coast | Fiesta Jumps"
+    prefetch:
+      - "/bounce-house-rentals/"
+      - "/book-now/"
+
+  - route: "/coupons/"
+    file: "company/coupons.html"
+    title: "Coupons & Discounts | Fiesta Jumps Santa Barbara"
+    prefetch:
+      - "/book-now/"
+
+  - route: "/contact/"
+    file: "company/contact.html"
+    title: "Contact Fiesta Jumps Santa Barbara"
+    prefetch:
+      - "/book-now/"
+
+  - route: "/book-now/"
+    file: "company/book-now.html"
+    title: "Book Your Rental – Fiesta Jumps Santa Barbara"
+    prefetch: []
+
+  - route: "/privacy-policy/"
+    file: "company/privacy.html"
+    title: "Privacy Policy | Fiesta Jumps Santa Barbara"
+    prefetch: []
+
+# ═══════════════════════════════════════════════════════════════
+# APACHE .htaccess REWRITE RULES
+# Copy this block into your WordPress .htaccess ABOVE the
+# WordPress default block (# BEGIN WordPress ... # END WordPress)
+# ═══════════════════════════════════════════════════════════════
+#
+# apache_rewrites: |
+#   RewriteEngine On
+#   RewriteBase /
+#
+#   # Redirect old URLs to new clean slugs (if you had old pages)
+#   RewriteRule ^home_Page\.html$ / [R=301,L]
+#   RewriteRule ^classic_bounce_houses\.html$ /bounce-house-rentals/ [R=301,L]
+#   RewriteRule ^bounce-house-rentals\.html$ /bounce-house-rentals/ [R=301,L]
+#
+#   # WordPress handles the rest via its own rewrite rules below
+
+# ═══════════════════════════════════════════════════════════════
+# NGINX REWRITE RULES
+# Add inside your server {} block in nginx.conf
+# ═══════════════════════════════════════════════════════════════
+#
+# nginx_rewrites: |
+#   # Redirect old .html files to clean slugs
+#   rewrite ^/home_Page\.html$             /            permanent;
+#   rewrite ^/classic_bounce_houses\.html$ /bounce-house-rentals/ permanent;
+#   rewrite ^/bounce-house-rentals\.html$  /bounce-house-rentals/ permanent;
+#
+#   # Clean URL handling (WordPress does this via PHP, but for static HTML:)
+#   location / {
+#     try_files $uri $uri/ $uri.html =404;
+#   }
+
+# ═══════════════════════════════════════════════════════════════
+# WORDPRESS PAGE SLUG MAP
+# When creating pages in WordPress admin, use these slugs exactly.
+# WordPress Settings → Permalinks → must be set to "Post name"
+# ═══════════════════════════════════════════════════════════════
+#
+# wordpress_slugs:
+#   Homepage:                    (front page, no slug needed)
+#   Classic Bounce Houses:       bounce-house-rentals
+#   Combo Bounce Houses:         combo-bounce-house-rentals
+#   Dry Slides:                  dry-slide-rentals
+#   Water Slides:                water-slides-rentals
+#   Foam Cannon:                 foam-cannon-rentals
+#   Obstacle Courses:            obstacle-course-rentals
+#   Interactive Games:           interactive-game-rentals
+#   Photo Booth:                 photo-booth-rental
+#   Concessions:                 concessions-machine
+#   Trackless Train:             sb-trackless-train
+#   Tent Rentals:                tent-rentals
+#   Tables, Chairs & Linen:      tables-chairs-linen
+#   Generators:                  generators
+#   Staffed Attendants:          fully-staffed-attendants
+#   Bundle Deals:                bundle-deals
+#   About Us:                    about-us
+#   Service Area:                service-area
+#   Coupons:                     coupons
+#   Contact:                     contact
+#   Book Now:                    book-now
+#   Privacy Policy:              privacy-policy

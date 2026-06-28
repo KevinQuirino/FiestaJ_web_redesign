@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set theme before first paint so there's no flash of the wrong theme -->
+    <script>(function () {
+            try {
+                var t =
+                    localStorage.getItem('fj-theme')
+                    || (
+                        matchMedia('(prefers-color-scheme: dark)').matches
+                            ? 'dark'
+                            : 'light'
+                    );
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <title>Classic Bounce House Rentals in Santa Barbara, CA | Fiesta Jumps</title>
+    <meta name="description" content="Rent classic bounce houses in Santa Barbara, CA.
+        Fiesta Jumps offers castle bouncers, themed inflatables, and more — delivered,
+        set up, and city-park approved.">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Classic Bounce House Rentals — Fiesta Jumps Santa Barbara">
+    <meta property="og:description" content="Santa Barbara's #1 bounce house rental company. Castles, themed bouncers,
+        and more — licensed, insured, city park approved.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fiestajumps.com/bounce-house-rentals/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/subpages.css">
+    <link rel="stylesheet" href="/dark-mode.css">
+    <!-- router.js MUST load before main.js -->
+    <script src="/router.js"></script>
+
+    <!--
+    PREFETCH HINTS — AJAX preloading for faster transitions
+    Add one <link rel="prefetch"> for every page a user is
+    likely to visit next from this page.
+    The main.js initPageTransitions() also injects these
+    dynamically on hover, but these hints load them earlier. -->
+
+    <link rel="prefetch" href="/combo-bounce-house-rentals/" as="document">
+    <link rel="prefetch" href="/water-slides-rentals/" as="document">
+    <link rel="prefetch" href="/bundle-deals/" as="document">
+    <link rel="prefetch" href="/book-now/" as="document">
+
+</head>
+
+<body>
+
+    <!-- PAGE TRANSITION CURTAIN (used by main.js fade) -->
+    <div class="pt-curtain" id="ptCurtain" aria-hidden="true"></div>
+
+    <!--@include partials/announcement-bar.html-->
+
+    <!--@include partials/header.html-->
+
+    <!--@include partials/category-hero.html
+    {
+        "crumbMiddle": "<a href=\"/#rentals\" class=\"fj-link\">Rentals</a><span class=\"bc-sep\">›</span>",
+        "breadcrumbCurrent": "Classic Bounce Houses",
+        "catTag": "🏰 Classic Bounce Houses",
+        "title": "Classic Bounce House<br>Rentals in <em>Santa Barbara</em>",
+        "desc": "From colorful castle designs to themed bouncers for every occasion — Fiesta Jumps delivers clean, inspected bounce houses right to your door. Perfect for birthdays, backyard parties, school events, church gatherings, and family celebrations.",
+        "badges": ["✅ Delivery &amp; Setup Included", "🏅 City Park Approved", "🛡️ Licensed &amp; Insured", "🧹 Clean &amp; Inspected"],
+        "ctaPrimaryText": "Set Event Date",
+        "ctaPrimaryHref": "/book-now/"
+    }
+    -->
+
+    <!-- ══ FILTER BAR ═══════════════════════════════════════════ -->
+    <nav class="filter-bar" aria-label="Filter bounce houses">
+        <div class="container filter-bar-inner">
+            <fieldset class="filter-pills" aria-label="Filter options">
+                <button class="filter-pill active" data-filter="all">All Units</button>
+                <button class="filter-pill" data-filter="standard">Standard</button>
+                <button class="filter-pill" data-filter="large">Large</button>
+                <button class="filter-pill" data-filter="themed">Themed</button>
+                <button class="filter-pill" data-filter="basketball">w/ Basketball</button>
+            </fieldset>
+            <span class="filter-count" id="filterCount" aria-live="polite">14 units available</span>
+        </div>
+    </nav>
+
+    <!-- ══ PRODUCTS GRID ════════════════════════════════════════ -->
+    <section class="products-wrap" id="products">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+
+                <!-- ─────────────────────────────────────────────────────
+        PRODUCT CARDS
+        To use a real photo: replace the <div class="pcard-emoji">
+        with <img src="YOUR-URL" alt="Product name">
+        inside <div class="pcard-img">
+
+        EventHawk booking URL format:
+        href="/book-now/?item=PRODUCT-SLUG"
+        ───────────────────────────────────────────────────── -->
+
+                <!-- Hot Air Balloon Large -->
+                <div class="pcard" data-filter="large" data-aos="fade-up" style="--d:0ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#EBF5FF,#BFDBFE)">
+                        <!-- SWAP: <img src="https://fiestajumps.com/wp-content/uploads/hot-air-balloon.jpg" alt="Hot Air Balloon Bouncer"> -->
+                        <div class="pcard-emoji">🎈</div>
+                        <span class="pcard-badge">Large Unit</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Hot Air Balloon Large Bounce</h3>
+                        <p>A colorful and exciting large bounce house shaped like a hot air balloon — a guaranteed
+                            showstopper at any party.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Large</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <!-- ✅ AJAX PREFETCH — Get Quote and Details use fj-link for prefetch -->
+                        <a href="/book-now/?item=hot-air-balloon" class="pcard-btn pcard-btn--primary fj-link">Get
+                            Quote</a>
+                        <a href="/bounce-house-rentals/hot-air-balloon/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Lava Castle -->
+                <div class="pcard" data-filter="basketball large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA)">
+                        <div class="pcard-emoji">🏰</div>
+                        <span class="pcard-badge">⭐ Popular</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Lava Castle 16′ × 16′ w/ Basketball Hoop</h3>
+                        <p>Classic castle design with an integrated basketball hoop — bounce and shoot in one exciting
+                            unit.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 16′ × 16′</span>
+                            <span class="pcard-tag pcard-tag--warm">🏀 Hoop Included</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=lava-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/lava-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Mini Castle -->
+                <div class="pcard" data-filter="standard" data-aos="fade-up" style="--d:120ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#F0FDF4,#A7F3D0)">
+                        <div class="pcard-emoji">🏯</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Mini Castle 9′ × 9′</h3>
+                        <p>Perfect for smaller yards and younger children. Safe, fun, and easy to set up in tight
+                            spaces.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 9′ × 9′</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=mini-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/mini-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Pink Castle -->
+                <div class="pcard" data-filter="themed" data-aos="fade-up" style="--d:0ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FDF2F8,#FBCFE8)">
+                        <div class="pcard-emoji">🎀</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Pink Castle</h3>
+                        <p>A beautiful pink princess castle — the ultimate themed bouncer for girls' birthday parties
+                            and princess events.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--warm">🎀 Themed</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=pink-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/pink-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Pink Castle Large -->
+                <div class="pcard" data-filter="themed large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FDF2F8,#FBCFE8)">
+                        <div class="pcard-emoji">🏰</div>
+                        <span class="pcard-badge pcard-badge--blue">Large</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Pink Castle Large Bounce House</h3>
+                        <p>The larger version of our beloved Pink Castle — more room, more fun for bigger parties and
+                            events.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Large Unit</span>
+                            <span class="pcard-tag pcard-tag--warm">🎀 Themed</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=pink-castle-large" class="pcard-btn pcard-btn--primary fj-link">Get
+                            Quote</a>
+                        <a href="/bounce-house-rentals/pink-castle-large/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Rainbow Castle Large -->
+                <div class="pcard" data-filter="standard large" data-aos="fade-up" style="--d:120ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#EFF6FF,#BFDBFE)">
+                        <div class="pcard-emoji">🌈</div>
+                        <span class="pcard-badge pcard-badge--green">🔥 Best Seller</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Rainbow Castle Large Bouncer</h3>
+                        <p>Our most popular model — bigger space and vivid colors make this the go-to for large parties
+                            and events.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Large Unit</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=rainbow-castle-large" class="pcard-btn pcard-btn--primary fj-link">Get
+                            Quote</a>
+                        <a href="/bounce-house-rentals/rainbow-castle-large/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Rainbow Castle -->
+                <div class="pcard" data-filter="standard" data-aos="fade-up" style="--d:0ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#EFF6FF,#BFDBFE)">
+                        <div class="pcard-emoji">🌈</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Rainbow Castle Bounce House</h3>
+                        <p>A vibrant multi-color castle with classic bounce design — loved by kids of all ages at every
+                            party.</p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=rainbow-castle" class="pcard-btn pcard-btn--primary fj-link">Get
+                            Quote</a>
+                        <a href="/bounce-house-rentals/rainbow-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Red Castle -->
+                <div class="pcard" data-filter="standard" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Red Castle Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Red Castle Large -->
+                <div class="pcard" data-filter="large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <span class="pcard-badge pcard-badge--blue">Large</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Red Castle Large Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and
+                            excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">
+                            Get Quote
+                        </a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Sports Large -->
+                <div class="pcard" data-filter="large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <span class="pcard-badge pcard-badge--blue">Large</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Sports Large Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Tropical -->
+                <div class="pcard" data-filter="standard" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Tropical Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and
+                            excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Tropical Large -->
+                <div class="pcard" data-filter="large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <span class="pcard-badge pcard-badge--blue">Large</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Tropical Large Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Under the sea large -->
+                <div class="pcard" data-filter="large" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <span class="pcard-badge pcard-badge--blue">Large</span>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Under the sea Large Bounce House</h3>
+                        <p>A bold, bright red castle that stands out at any event and excites every guest who sees it.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+                <!-- Unicorn -->
+                <div class="pcard" data-filter="standard" data-aos="fade-up" style="--d:60ms">
+                    <div class="pcard-img" style="background:linear-gradient(135deg,#FEF2F2,#FCA5A5)">
+                        <div class="pcard-emoji">🔴</div>
+                        <div class="pcard-overlay"><span class="pcard-overlay-text">Quick View</span></div>
+                    </div>
+                    <div class="pcard-body">
+                        <h3>Unicorn Bounce House</h3>
+                        <p>A magical unicorn-themed inflatable that adds sparkle and fun to every party.
+                        </p>
+                        <div class="pcard-meta">
+                            <span class="pcard-tag pcard-tag--blue">📐 Standard</span>
+                            <span class="pcard-tag pcard-tag--green">✅ Available</span>
+                        </div>
+                    </div>
+                    <div class="pcard-actions">
+                        <a href="/book-now/?item=red-castle" class="pcard-btn pcard-btn--primary fj-link">Get Quote</a>
+                        <a href="/bounce-house-rentals/red-castle/"
+                            class="pcard-btn pcard-btn--outline fj-link">Details</a>
+                    </div>
+                </div>
+
+            </div><!-- /products-grid -->
+        </div>
+    </section>
+
+    <!-- ══ WHY RENT FROM FIESTA JUMPS ════════════════════════════ -->
+    <section class="why-rent" id="whyRent">
+        <div class="container">
+            <div class="why-rent-grid">
+                <div class="why-rent-content" data-aos="fade-right">
+                    <p class="section-label">Why Fiesta Jumps?</p>
+                    <h2 class="section-title">Santa Barbara's most trusted bounce house company</h2>
+                    <p class="section-sub">For 26 years we've delivered clean, inspected equipment and stress-free setup
+                        for every type of event — from backyard birthdays to large school events.</p>
+
+                    <ul class="why-list">
+                        <li class="why-item">
+                            <div class="why-item-icon">🚚</div>
+                            <div class="why-item-text">
+                                <strong>Delivery &amp; Setup Included</strong>
+                                <span>We bring it, set it up, and pick it up. You don't lift a finger.</span>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <div class="why-item-icon">🏅</div>
+                            <div class="why-item-text">
+                                <strong>City Park Approved</strong>
+                                <span>We're an approved vendor — no extra permits needed for SB city parks.</span>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <div class="why-item-icon">🧹</div>
+                            <div class="why-item-text">
+                                <strong>Clean &amp; Inspected Every Time</strong>
+                                <span>All equipment is sanitized, inspected, and safe before every rental.</span>
+                            </div>
+                        </li>
+                        <li class="why-item">
+                            <div class="why-item-icon">💯</div>
+                            <div class="why-item-text">
+                                <strong>Satisfaction Guaranteed</strong>
+                                <span>If something isn't right, we fix it. Your event success is our priority.</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- ✅ AJAX PREFETCH — both CTAs trigger prefetch on hover via fj-link -->
+                    <div style="display:flex;gap:12px;flex-wrap:wrap">
+                        <a href="/book-now/" class="btn btn-white btn-lg fj-link">Book Your Event →</a>
+                        <a href="/about-us/" class="btn btn-ghost-white btn-lg fj-link">Our Story</a>
+                    </div>
+                </div>
+
+                <div class="why-stats" data-aos="fade-left">
+                    <div class="why-stat">
+                        <span class="why-stat-num">26+</span>
+                        <span class="why-stat-label">Years in Business</span>
+                    </div>
+                    <div class="why-stat">
+                        <span class="why-stat-num">4.9★</span>
+                        <span class="why-stat-label">Google Rating</span>
+                    </div>
+                    <div class="why-stat">
+                        <span class="why-stat-num">5k+</span>
+                        <span class="why-stat-label">Events Served</span>
+                    </div>
+                    <div class="why-stat">
+                        <span class="why-stat-num">100%</span>
+                        <span class="why-stat-label">Satisfaction Guaranteed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ SEO CONTENT + RELATED LINKS ══════════════════════════ -->
+    <section class="seo-section">
+        <div class="container">
+            <div class="seo-grid">
+
+                <div class="seo-text">
+                    <h2>Classic Bounce House Rentals in Santa Barbara, CA</h2>
+                    <p>Inflatable bounce houses are the perfect centerpiece for any party or event. At Fiesta Jumps, we
+                        specialize in classic castle designs, themed bouncers, and units with built-in extras like
+                        basketball hoops. We serve Santa Barbara, Goleta, Montecito, Carpinteria, Santa Ynez, Los
+                        Olivos, and Buellton.</p>
+                    <p>All of our bounce houses are thoroughly cleaned and inspected before every rental. We handle
+                        delivery, professional setup, and breakdown — so you can focus entirely on enjoying your event.
+                        Our equipment is licensed, insured, and approved for use at Santa Barbara City Parks, so no
+                        extra permits are required.</p>
+                    <p>Whether it's a small backyard birthday party for 10 kids or a large school field day for 200
+                        students, we have the right bounce house for your event. <a href="/service-area/"
+                            class="fj-link">Check if we deliver to your area →</a></p>
+
+                    <div class="seo-btn-row">
+                        <!-- ✅ AJAX PREFETCH — all category chips use fj-link -->
+                        <a href="/combo-bounce-house-rentals/" class="seo-chip fj-link">🎠 Combo Units</a>
+                        <a href="/water-slides-rentals/" class="seo-chip fj-link">💧 Water Slides</a>
+                        <a href="/dry-slide-rentals/" class="seo-chip fj-link">🎢 Dry Slides</a>
+                        <a href="/obstacle-course-rentals/" class="seo-chip fj-link">🏁 Obstacle Courses</a>
+                        <a href="/bundle-deals/" class="seo-chip fj-link">📦 Bundle Deals</a>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- ✅ ALL RELATED LINKS USE fj-link — hover prefetch fires on each one -->
+                    <div class="related-card">
+                        <h4>Related Categories</h4>
+                        <a href="/combo-bounce-house-rentals/" class="related-link fj-link">Combo Bounce Houses <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/water-slides-rentals/" class="related-link fj-link">Water Slide Rentals <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/dry-slide-rentals/" class="related-link fj-link">Dry Slide Rentals <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/obstacle-course-rentals/" class="related-link fj-link">Obstacle Courses <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/foam-cannon-rentals/" class="related-link fj-link">Foam Cannon <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/concessions-machine/" class="related-link fj-link">Concession Machines <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/bundle-deals/" class="related-link related-link--featured fj-link">🔥 Bundle Deals —
+                            Save More <span class="related-link-arr">→</span></a>
+                    </div>
+
+                    <div class="related-card">
+                        <h4>Service Areas</h4>
+                        <a href="/service-area/#montecito" class="related-link fj-link">Montecito <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/service-area/#goleta" class="related-link fj-link">Goleta <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/service-area/#carpinteria" class="related-link fj-link">Carpinteria <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/service-area/#santa-ynez" class="related-link fj-link">Santa Ynez <span
+                                class="related-link-arr">→</span></a>
+                        <a href="/service-area/#buellton" class="related-link fj-link">Buellton <span
+                                class="related-link-arr">→</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CTA BANNER ════════════════════════════════════════════ -->
+    <section class="cta-banner">
+        <div class="container cta-inner">
+            <div>
+                <h2 class="cta-title">Ready to book your bounce house?</h2>
+                <p class="cta-sub">Set your event date and we'll confirm availability same-day. Easy online booking,
+                    professional delivery, stress-free setup.</p>
+            </div>
+            <div class="cta-btns">
+                <!-- ✅ AJAX PREFETCH — primary CTA uses fj-link -->
+                <a href="/book-now/" class="btn btn-white btn-lg fj-link">Set Event Date</a>
+                <a href="tel:+18055630870" class="btn btn-ghost-white btn-lg">(805) 563-0870</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container ftr-grid">
+            <div class="ftr-brand">
+                <a href="/" class="hdr-logo fj-link" aria-label="Fiesta Jumps">
+                    <img src="https://assets.cdn.filesafe.space/eMQhHZHd01T7RQTLu3Jo/media/6a2545bcfc95b24549a910c0.png"
+                        alt="Fiesta Jumps" class="hdr-logo-img" width="120" height="40"
+                        style="filter:brightness(0) invert(1);opacity:.9">
+                </a>
+                <p class="ftr-tagline">Santa Barbara's most trusted bounce house &amp; party rental company since 1999.
+                </p>
+                <div class="ftr-contacts">
+                    <a href="tel:+18055630870" class="ftr-contact-link">📞 (805) 563-0870</a>
+                    <a href="mailto:fiestajumpsj@aol.com" class="ftr-contact-link">✉️ fiestajumpsj@aol.com</a>
+                    <span class="ftr-contact-link">📍 Santa Barbara, CA 93101</span>
+                </div>
+                <div class="ftr-socials">
+                    <a href="https://facebook.com/fiestajumps" class="ftr-social" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/fiestajumps" class="ftr-social" target="_blank"
+                        rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ftr-col">
+                <h4 class="ftr-col-title">Bounce Houses</h4>
+                <!-- ✅ FOOTER LINKS — all use fj-link for prefetch on hover -->
+                <a href="/bounce-house-rentals/" class="ftr-link fj-link">Classic Bounce Houses</a>
+                <a href="/combo-bounce-house-rentals/" class="ftr-link fj-link">Combo Bounce Houses</a>
+                <a href="/dry-slide-rentals/" class="ftr-link fj-link">Dry Slides</a>
+                <a href="/water-slides-rentals/" class="ftr-link fj-link">Water Slides</a>
+                <a href="/foam-cannon-rentals/" class="ftr-link fj-link">Foam Cannon</a>
+                <a href="/obstacle-course-rentals/" class="ftr-link fj-link">Obstacle Courses</a>
+            </div>
+
+            <div class="ftr-col">
+                <h4 class="ftr-col-title">Attractions</h4>
+                <a href="/concessions-machine/" class="ftr-link fj-link">Concession Machines</a>
+                <a href="/interactive-game-rentals/" class="ftr-link fj-link">Interactive Games</a>
+                <a href="/photo-booth-rental/" class="ftr-link fj-link">Photo Booth</a>
+                <a href="/sb-trackless-train/" class="ftr-link fj-link">Trackless Train</a>
+                <a href="/bundle-deals/" class="ftr-link fj-link">Bundle Deals</a>
+            </div>
+
+            <div class="ftr-col">
+                <h4 class="ftr-col-title">Service Areas</h4>
+                <span class="ftr-link">Santa Barbara</span>
+                <span class="ftr-link">Montecito</span>
+                <span class="ftr-link">Carpinteria</span>
+                <span class="ftr-link">Goleta</span>
+                <span class="ftr-link">Santa Ynez</span>
+                <span class="ftr-link">Los Olivos</span>
+                <span class="ftr-link">Buellton</span>
+            </div>
+
+            <div class="ftr-col">
+                <h4 class="ftr-col-title">Company</h4>
+                <a href="/about-us/" class="ftr-link fj-link">About Us</a>
+                <a href="/service-area/" class="ftr-link fj-link">Service Area</a>
+                <a href="/coupons/" class="ftr-link fj-link">Coupons &amp; Discounts</a>
+                <a href="/contact/" class="ftr-link fj-link">Contact Us</a>
+                <a href="/privacy-policy/" class="ftr-link fj-link">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="ftr-sitemap">
+            <div class="container ftr-sitemap-inner">
+                <span class="sitemap-label">Sitemap:</span>
+                <a href="/" class="ftr-sm-link fj-link">Home</a><span>·</span>
+                <a href="/bounce-house-rentals/" class="ftr-sm-link fj-link">Bounce Houses</a><span>·</span>
+                <a href="/water-slides-rentals/" class="ftr-sm-link fj-link">Water Slides</a><span>·</span>
+                <a href="/obstacle-course-rentals/" class="ftr-sm-link fj-link">Obstacle Courses</a><span>·</span>
+                <a href="/concessions-machine/" class="ftr-sm-link fj-link">Concessions</a><span>·</span>
+                <a href="/bundle-deals/" class="ftr-sm-link fj-link">Bundle Deals</a><span>·</span>
+                <a href="/contact/" class="ftr-sm-link fj-link">Contact</a>
+            </div>
+        </div>
+
+        <div class="ftr-bottom">
+            <div class="container ftr-bottom-inner">
+                <p>© 2026 Fiesta Jumps Santa Barbara CA · All Rights Reserved</p>
+                <p><a href="/privacy-policy/" class="ftr-sm-link fj-link">Privacy Policy</a> · Powered by <a
+                        href="https://eventhawk.com" class="ftr-sm-link" target="_blank"
+                        rel="noopener noreferrer">EventHawk</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+    <aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping cart" aria-hidden="true">
+        <div class="cart-hdr">
+            <h2>Your Cart</h2>
+            <button class="cart-close-btn" id="cartCloseBtn" aria-label="Close cart">✕</button>
+        </div>
+        <div class="cart-body">
+            <div class="cart-empty">
+                <div class="cart-empty-ico">🛒</div>
+                <p>Your cart is empty</p>
+                <a href="/bounce-house-rentals/" class="btn btn-orange fj-link">Browse Rentals</a>
+            </div>
+        </div>
+    </aside>
+
+    <script src="/main.js"></script>
+    <script>
+        /* ── Filter pills ───────────────────────────────────────── */
+        const pills = document.querySelectorAll('.filter-pill');
+        const cards = document.querySelectorAll('.pcard[data-filter]');
+        const countEl = document.getElementById('filterCount');
+
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const f = pill.dataset.filter;
+                let vis = 0;
+
+                cards.forEach(card => {
+                    const cats = card.dataset.filter || '';
+                    const show = f === 'all' || cats.split(' ').includes(f);
+                    card.style.display = show ? '' : 'none';
+                    if (show) vis++;
+                });
+
+                if (countEl) {
+                    countEl.textContent = `${vis} unit${vis !== 1 ? 's' : ''} available`;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
