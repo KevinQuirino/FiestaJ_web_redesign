@@ -19,7 +19,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { ROUTES, injectBase, ROOT } = require('./server.js');
+const { ROUTES, injectBase, ROOT, NOT_FOUND_HTML } = require('./server.js');
 
 const OUT = path.join(ROOT, 'docs');
 
@@ -70,6 +70,10 @@ function main() {
   for (const file of STATIC_FILES) {
     fs.copyFileSync(path.join(ROOT, file), path.join(OUT, file));
   }
+
+  // GitHub Pages serves docs/404.html for any unmatched path — server.js's
+  // inline 404 fallback only exists in memory, so it needs writing to disk.
+  fs.writeFileSync(path.join(OUT, '404.html'), applyBasePath(NOT_FOUND_HTML));
 
   // Tell GitHub Pages to skip Jekyll processing (plain static site).
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');

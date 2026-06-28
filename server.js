@@ -130,44 +130,12 @@ function processIncludes(html) {
   });
 }
 
-/* ── SERVER ──────────────────────────────────────────────────── */
-const server = http.createServer((req, res) => {
-  let urlPath = req.url.split('?')[0]; // strip query string
-
-  // Normalise: add trailing slash if missing and not a file
-  if (!path.extname(urlPath) && !urlPath.endsWith('/')) {
-    urlPath += '/';
-  }
-
-  // 1. Check if it's a clean-slug route
-  let filePath = null;
-  if (ROUTES[urlPath]) {
-    filePath = path.join(ROOT, ROUTES[urlPath]);
-  }
-
-  // 2. Fallback: try as a direct static file (css, js, images, etc.)
-  if (!filePath) {
-    const candidate = path.join(ROOT, urlPath);
-    // Security: ensure it stays inside ROOT
-    if (candidate.startsWith(ROOT)) {
-      filePath = candidate;
-    }
-  }
-
-  // 3. Serve the file
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      // Try without trailing slash
-      const alt = path.join(ROOT, urlPath.replace(/\/$/, ''));
-      fs.readFile(alt, (err2, data2) => {
-        if (err2) {
-          // Serve branded 404.html if it exists, otherwise inline fallback
-          const notFoundFile = path.join(ROOT, '404.html');
-          fs.readFile(notFoundFile, (e3, d3) => {
-            if (e3) {
-              // Inline fallback — utf-8 charset ensures emoji/arrows render
-              res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-              res.end(Buffer.from(`<!DOCTYPE html>
+/* ── 404 FALLBACK ──────────────────────────────────────────────
+   Used both as the inline 404 response below and (via build-pages.js)
+   written out to docs/404.html so GitHub Pages can serve it too —
+   GH Pages can't run this server, so it needs the file on disk.
+─────────────────────────────────────────────────────────────── */
+const NOT_FOUND_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -210,7 +178,46 @@ const server = http.createServer((req, res) => {
 </div>
 <script src="/main.js"></script>
 </body>
-</html>`, 'utf8'));
+</html>`;
+
+/* ── SERVER ──────────────────────────────────────────────────── */
+const server = http.createServer((req, res) => {
+  let urlPath = req.url.split('?')[0]; // strip query string
+
+  // Normalise: add trailing slash if missing and not a file
+  if (!path.extname(urlPath) && !urlPath.endsWith('/')) {
+    urlPath += '/';
+  }
+
+  // 1. Check if it's a clean-slug route
+  let filePath = null;
+  if (ROUTES[urlPath]) {
+    filePath = path.join(ROOT, ROUTES[urlPath]);
+  }
+
+  // 2. Fallback: try as a direct static file (css, js, images, etc.)
+  if (!filePath) {
+    const candidate = path.join(ROOT, urlPath);
+    // Security: ensure it stays inside ROOT
+    if (candidate.startsWith(ROOT)) {
+      filePath = candidate;
+    }
+  }
+
+  // 3. Serve the file
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      // Try without trailing slash
+      const alt = path.join(ROOT, urlPath.replace(/\/$/, ''));
+      fs.readFile(alt, (err2, data2) => {
+        if (err2) {
+          // Serve branded 404.html if it exists, otherwise inline fallback
+          const notFoundFile = path.join(ROOT, '404.html');
+          fs.readFile(notFoundFile, (e3, d3) => {
+            if (e3) {
+              // Inline fallback — utf-8 charset ensures emoji/arrows render
+              res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+              res.end(Buffer.from(NOT_FOUND_HTML, 'utf8'));
             } else {
               res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
               res.end(injectBase(d3, '.html', '/404'));
@@ -266,7 +273,7 @@ if (require.main === module) {
   });
 }
 
-module.exports = { ROUTES, MIME, injectBase, processIncludes, ROOT };
+module.exports = { ROUTES, MIME, injectBase, processIncludes, ROOT, NOT_FOUND_HTML };
 
 function getLocalIP() {
   try {
