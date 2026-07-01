@@ -245,7 +245,7 @@ const server = http.createServer((req, res) => {
     // Cache static assets (js/css/images) in browser
     const headers = { 'Content-Type': mime };
     if (['.css', '.js', '.png', '.jpg', '.webp', '.svg', '.woff2'].includes(ext)) {
-      headers['Cache-Control'] = 'public, max-age=3600';
+      headers['Cache-Control'] = 'no-cache';
     } else {
       headers['Cache-Control'] = 'no-cache';
     }

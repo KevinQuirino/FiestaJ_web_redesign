@@ -1001,6 +1001,75 @@
     return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
   }
 
+  /* ══ PRODUCT MODAL ══════════════════════════════════════════ */
+  function initProductModal() {
+    const overlay = document.getElementById('prodModalOverlay');
+    const closeBtn = document.getElementById('prodModalClose');
+    if (!overlay) return;
+
+    const mEmoji = document.getElementById('prodModalEmoji');
+    const mTitle = document.getElementById('prodModalTitle');
+    const mBadge = document.getElementById('prodModalBadge');
+    const mDesc = document.getElementById('prodModalDesc');
+    const mDims = document.getElementById('prodModalDims');
+    const mArea = document.getElementById('prodModalArea');
+    const mCap = document.getElementById('prodModalCap');
+    const mPower = document.getElementById('prodModalPower');
+    const mPrice = document.getElementById('prodModalPrice');
+    const mCta = document.getElementById('prodModalCta');
+
+    function openModal(data) {
+      if (mEmoji) mEmoji.textContent = data.emoji || '🏰';
+      if (mTitle) mTitle.textContent = data.title || '';
+      
+      if (mBadge) {
+        if (data.badge) {
+          mBadge.textContent = data.badge;
+          mBadge.style.display = 'inline-block';
+        } else {
+          mBadge.style.display = 'none';
+        }
+      }
+
+      if (mDesc) mDesc.textContent = data.desc || '';
+      if (mDims) mDims.textContent = data.dims || 'N/A';
+      if (mArea) mArea.textContent = data.area || 'N/A';
+      if (mCap) mCap.textContent = data.cap || 'N/A';
+      if (mPower) mPower.textContent = data.power || 'N/A';
+      if (mPrice) mPrice.textContent = data.price || 'N/A';
+      if (mCta) mCta.href = data.book || '#';
+
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      lockBodyScroll();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      unlockBodyScroll();
+    }
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.js-open-modal');
+      if (trigger) {
+        e.preventDefault();
+        openModal(trigger.dataset);
+      }
+    });
+
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  }
+
   /* ══ INIT ═══════════════════════════════════════════════════ */
   function init() {
     initPageTransitions();
@@ -1013,6 +1082,7 @@
     initTrainGallery();
     initScrollAnim();
     initRentalTabs();       // tab switcher
+    initProductModal();     // product modal
     initGoogleRating();
     initGeolocation();
     prefillBookingCity();
