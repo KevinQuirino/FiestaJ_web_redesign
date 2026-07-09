@@ -666,3 +666,239 @@ All tokens (colors, shadows, radii) from style.css :root
 .related-link--featured {
     color: var(--orange);
 }
+
+/* ── TRACKLESS TRAIN REDESIGN ──────────────────────────────── */
+
+/* Red Hero */
+.hero-red {
+    background: linear-gradient(135deg, var(--orange) 0%, #D83100 100%);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+
+.hero-red-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-red-badge {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 16px;
+    border-radius: var(--r-full);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+}
+
+.hero-red-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-red-title em {
+    font-style: normal;
+    color: var(--yellow);
+}
+
+.hero-red-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0.9;
+}
+
+.hero-red-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-red-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    color: var(--off-white);
+}
+
+.hero-red-wave svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+/* History Section */
+.train-history {
+    padding: 80px 0;
+}
+
+.train-history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .train-history-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.train-history-img {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.history-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.history-floating-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: var(--r-md);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--orange);
+    transform: rotate(-5deg);
+}
+
+.history-text {
+    font-size: 16px;
+    color: var(--ink3);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+/* Carousel Events */
+.train-events {
+    padding: 80px 0;
+}
+
+/* Socials Layout (Instagram / TikTok) */
+.train-socials {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.social-col {
+    background: var(--off-white-alt);
+    border-radius: var(--r-lg);
+    padding: 30px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+}
+
+.social-hdr {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-full);
+    color: #fff;
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.insta-icon {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.tiktok-icon {
+    background: #000;
+}
+
+.social-hdr h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.social-feed {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.social-post {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    aspect-ratio: 1/1;
+}
+
+.social-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.social-post:hover img {
+    transform: scale(1.05);
+}
+
+.tiktok-post {
+    aspect-ratio: 9/16;
+}
+
+/* Packages Grid Override for 2 Types */
+.train-types-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+@media (max-width: 700px) {
+    .train-types-grid {
+        grid-template-columns: 1fr;
+    }
+}
